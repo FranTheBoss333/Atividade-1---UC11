@@ -87,13 +87,8 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="listaProdutos">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="ID" type="java.lang.Object"/>
-                <Column editable="true" title="Nome" type="java.lang.Object"/>
-                <Column editable="true" title="Valor" type="java.lang.Object"/>
-                <Column editable="true" title="Status" type="java.lang.Object"/>
-              </Table>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="}&#xa;catch(SQLException e)&#xa;{&#xa;    JOptionPane.showMessageDialog(null,&quot;Erro ao estabelecer conex&#xe3;o: &quot; + e.getMessage(),&quot;Erro&quot;,JOptionPane.ERROR_MESSAGE);&#xa;}">
+              <Connection code="modelo" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
@@ -123,6 +118,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] colunas = {&quot;ID&quot;,&quot;Nome&quot;,&quot;Valor&quot;,&quot;Status&quot;};&#xa;DefaultTableModel modelo = new DefaultTableModel(colunas, 0);&#xa;try&#xa;{&#xa;    ArrayList&lt;ProdutosDTO&gt; lista = ProdutosDAO.listarProdutos();  &#xa;    for (int i = 0; i &lt; lista.size(); i++)&#xa;    {&#xa;        ProdutosDTO produto = lista.get(i);&#xa;        String[] dados = {String.valueOf(produto.getId()),produto.getNome(),String.valueOf(produto.getValor()),produto.getStatus()};&#xa;        modelo.addRow(dados);&#xa;    }"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

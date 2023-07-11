@@ -1,5 +1,7 @@
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -43,17 +45,23 @@ public class listagemVIEW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "Valor", "Status"
+        String[] colunas = {"ID","Nome","Valor","Status"};
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0);
+        try
+        {
+            ArrayList<ProdutosDTO> lista = ProdutosDAO.listarProdutos();
+            for (int i = 0; i < lista.size(); i++)
+            {
+                ProdutosDTO produto = lista.get(i);
+                String[] dados = {String.valueOf(produto.getId()),produto.getNome(),String.valueOf(produto.getValor()),produto.getStatus()};
+                modelo.addRow(dados);
             }
-        ));
+            listaProdutos.setModel(modelo);
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null,"Erro ao estabelecer conexão: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }
         jScrollPane1.setViewportView(listaProdutos);
 
         jLabel1.setFont(new java.awt.Font("Lucida Fax", 0, 18)); // NOI18N
