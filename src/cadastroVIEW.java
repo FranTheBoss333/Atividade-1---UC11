@@ -159,9 +159,9 @@ public class cadastroVIEW extends javax.swing.JFrame {
         }
         catch(SQLException e)
         {
-            JOptionPane.showMessageDialog(null,"Erro ao estabelecer conexão: " + e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Erro ao estabelecer conexão: " + e.getMessage(),"Mensagem de erro",JOptionPane.ERROR_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso!");
+        JOptionPane.showMessageDialog(null,"O cadastro foi realizado com sucesso!");
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
