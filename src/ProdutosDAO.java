@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class ProdutosDAO {
     
     static Connection conn;
-    PreparedStatement prep;
+    static PreparedStatement prep;
     static Statement stmt;
     static ResultSet resultset;
     static ArrayList<ProdutosDTO> listagem = new ArrayList<>();
@@ -54,7 +54,7 @@ public class ProdutosDAO {
         return listagem;
     }
     
-    public void venderProduto(int id) throws SQLException
+    public static void venderProduto(int id) throws SQLException
     {
         conn = new conectaDAO().connectDB();
         prep = conn.prepareStatement("update produtos set status='Vendido' where id=?");
