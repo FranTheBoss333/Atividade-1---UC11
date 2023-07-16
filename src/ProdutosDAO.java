@@ -62,7 +62,7 @@ public class ProdutosDAO {
         prep.executeUpdate();
     }
     
-    public ArrayList<ProdutosDTO> listarProdutosVendidos() throws SQLException
+    public static ArrayList<ProdutosDTO> listarProdutosVendidos() throws SQLException
     {
         conn = new conectaDAO().connectDB();
         stmt = conn.createStatement();
