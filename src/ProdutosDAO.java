@@ -54,8 +54,15 @@ public class ProdutosDAO {
         return listagem;
     }
     
+    public void venderProduto(int id) throws SQLException
+    {
+        conn = new conectaDAO().connectDB();
+        prep = conn.prepareStatement("update produtos set status='Vendido' where id=?");
+        prep.setInt(1, id);
+        prep.executeUpdate();
+    }
     
     
-        
+      
 }
 
